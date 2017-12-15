@@ -8,7 +8,7 @@
 
 ##   What is it?
 
-Swift Extension to convert hexadecimal values into UIColor Objects.
+Swift 3, Swift 4 Extension to convert hexadecimal values into UIColor Objects.
 
 Hex formats allowed:
 - Short Hex: **rgb**
