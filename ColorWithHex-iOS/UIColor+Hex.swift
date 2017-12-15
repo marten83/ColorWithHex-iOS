@@ -6,7 +6,7 @@
 //  Copyright © 2016 GabrielMassana. All rights reserved.
 //
 //  Credit: https://www.hackingwithswift.com/example-code/uicolor/how-to-convert-a-hex-color-to-a-uicolor
-// 
+//
 
 import UIKit
 
@@ -20,7 +20,7 @@ public extension UIColor {
      - parameter hex: String with the hex information. With or without hash symbol.
      
      - returns: A UIColor from the given String.
-    */
+     */
     @objc(cwh_colorWithHex:)
     public class func colorWithHex(_ hex: String) -> UIColor? {
         
@@ -29,7 +29,7 @@ public extension UIColor {
         let noHash = hex.replacingOccurrences(of: "#", with: "")
         
         let start = noHash.startIndex
-        let hexColor = String(noHash[..<start])
+        let hexColor = String(noHash[start...])
         
         if (hexColor.count == 8) {
             
@@ -37,7 +37,7 @@ public extension UIColor {
         }
         else if (hexColor.count == 6)
         {
-           color = colorWithHexSixCharacters(hexColor)
+            color = colorWithHexSixCharacters(hexColor)
         }
         else if (hexColor.count == 3)
         {
@@ -106,16 +106,17 @@ public extension UIColor {
     fileprivate class func colorWithHexThreeCharacters(_ hexColor: String) -> UIColor? {
         
         let redRange: Range = (hexColor.index(hexColor.startIndex, offsetBy: 0) ..< hexColor.index(hexColor.startIndex, offsetBy: 1))
-        let redString: String = String(format: "%@%@", hexColor.substring(with: redRange), hexColor.substring(with: redRange))
+        let redString: String = String(format: "%@%@", String(hexColor[redRange]), String(hexColor[redRange]))
         
         let greenRange: Range = (hexColor.index(hexColor.startIndex, offsetBy: 1) ..< hexColor.index(hexColor.startIndex, offsetBy: 2))
-        let greenString: String = String(format: "%@%@", hexColor.substring(with: greenRange), hexColor.substring(with: greenRange))
+        let greenString: String = String(format: "%@%@", String(hexColor[greenRange]), String(hexColor[greenRange]))
         
         let blueRange: Range = (hexColor.index(hexColor.startIndex, offsetBy: 2) ..< hexColor.index(hexColor.startIndex, offsetBy: 3))
-        let blueString: String = String(format: "%@%@", hexColor.substring(with: blueRange), hexColor.substring(with: blueRange))
+        let blueString: String = String(format: "%@%@", String(hexColor[blueRange]), String(hexColor[blueRange]))
         
         let hex: String = String(format: "%@%@%@", redString, greenString, blueString)
         
         return colorWithHexSixCharacters(hex)
     }
 }
+
